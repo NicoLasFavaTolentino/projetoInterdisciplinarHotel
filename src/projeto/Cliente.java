@@ -4,13 +4,13 @@ public class Cliente extends Forma{
 	private String nome;
 	private String cpf;
 	private String dataNascimento;
-	private String endereço;
+	private String endereco;
 	
-	public Cliente(String nome, String cpf, String dataNascimento, String endereço) {
+	public Cliente(String nome, String cpf, String dataNascimento, String endereco) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-		this.endereço = endereço;
+		this.endereco = endereco;
 	}
 	
 	public String getNome() {
@@ -37,12 +37,12 @@ public class Cliente extends Forma{
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class Cliente extends Forma{
 		System.out.println("Nome: " + this.nome);
 		System.out.println("CPF: " + this.cpf);
 		System.out.println("Data Nascimento: " + this.dataNascimento);
-		System.out.println("Endereço: " + this.endereço);
+		System.out.println("Endereço: " + this.endereco);
 		
 	}
 }

@@ -12,9 +12,10 @@ public class Main {
 		Hotel hotel = new Hotel();
 		
 		do {
-			System.out.println("1 - Adicionar Cliente" + "\n" + 
-			"2 - Remover Cliente" + "\n" + 
-			"3 - Exibir Todos os Clientes");
+			System.out.println("1 - Adicionar Cliente" + "\n" +
+					"2 - Remover Cliente" + "\n" +
+					"3 - Pesquisar Cliente" + "\n" +
+					"4 - Exibir Todos os Clientes");
 			
 			System.out.print("Sua escolha: ");
 			escolha = leia.next().toUpperCase();
@@ -30,13 +31,12 @@ public class Main {
 					System.out.print("Data Nascimento: ");
 					dataNascimento = leia.next();
 					
-					System.out.print("Endereço: ");
+					System.out.print("Endereï¿½o: ");
 					endereco = leia.next();
 					
 					Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
 					hotel.adicionarCliente(cliente);
-					
-					System.out.println(hotel.getClientes().get(0).getCpf());
+
 					break;
 					
 				case "2":
@@ -58,15 +58,24 @@ public class Main {
 					}
 					
 					break;
-					
+
 				case "3":
+					System.out.print("CPF a ser procurado: ");
+					cpf = leia.next();
+
+					System.out.println("Encontrado: ");
+					hotel.printClienteComCpf(cpf);
+
+					break;
+					
+				case "4":
 					System.out.println("Todos os clientes: ");
 					hotel.printClientes();
 					
 					break;
 					
 		}
-		}while (escolha != "SAIR");
+		}while (!escolha.equals("SAIR"));
 		
 		
 	}

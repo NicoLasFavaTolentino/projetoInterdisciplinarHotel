@@ -5,7 +5,6 @@ public class Quarto extends Forma{
 	private int quantidadeCamas;
 	
 	public Quarto(int numero, int quantidadePessoas) {
-		super();
 		this.numero = numero;
 		this.quantidadeCamas = quantidadePessoas;
 	}
@@ -28,7 +27,7 @@ public class Quarto extends Forma{
 
 	@Override
 	public void print() {
-		System.out.println("Número: " + this.numero);
+		System.out.println("Nï¿½mero: " + this.numero);
 		System.out.println("Quantidade Pessoas: " + this.quantidadeCamas);
 	}
 }
