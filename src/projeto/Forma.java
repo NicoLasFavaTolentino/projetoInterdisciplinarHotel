@@ -1,5 +1,5 @@
 package projeto;
 
-public class Forma {
-
+abstract public class Forma {
+	abstract public void print();
 }
