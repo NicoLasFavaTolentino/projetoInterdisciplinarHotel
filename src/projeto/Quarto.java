@@ -2,12 +2,12 @@ package projeto;
 
 public class Quarto extends Forma{
 	private int numero;
-	private int quantidadePessoas;
+	private int quantidadeCamas;
 	
 	public Quarto(int numero, int quantidadePessoas) {
 		super();
 		this.numero = numero;
-		this.quantidadePessoas = quantidadePessoas;
+		this.quantidadeCamas = quantidadePessoas;
 	}
 	
 	public int getNumero() {
@@ -19,16 +19,16 @@ public class Quarto extends Forma{
 	}
 
 	public int getQuantidadePessoas() {
-		return quantidadePessoas;
+		return quantidadeCamas;
 	}
 
 	public void setQuantidadePessoas(int quantidadePessoas) {
-		this.quantidadePessoas = quantidadePessoas;
+		this.quantidadeCamas = quantidadePessoas;
 	}
 
 	@Override
 	public void print() {
 		System.out.println("Número: " + this.numero);
-		System.out.println("Quantidade Pessoas: " + this.quantidadePessoas);
+		System.out.println("Quantidade Pessoas: " + this.quantidadeCamas);
 	}
 }

@@ -53,11 +53,4 @@ public class Cliente extends Forma{
 		System.out.println("Endereço: " + this.endereço);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 }
