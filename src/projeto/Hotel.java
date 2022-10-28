@@ -12,8 +12,11 @@ public class Hotel {
 		clientes.add(cliente);
 	}
 	
-	public void removerCliente(int indice) {
-		clientes.remove(indice);
+	public void editarCliente(int indice, String nome, String cpf, String dataNascimento, String setEndereco) {
+		clientes.get(indice).setNome(nome);
+		clientes.get(indice).setCpf(cpf);
+		clientes.get(indice).setDataNascimento(dataNascimento);
+		clientes.get(indice).setEndereco(setEndereco);
 	}
 	
 	public ArrayList<Cliente> getClientes(){
