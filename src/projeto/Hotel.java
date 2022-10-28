@@ -33,6 +33,7 @@ public class Hotel {
 		}
 		
 		clientes.remove(indice);
+		this.removerQuarto(indice);
 	}
 	
 	public void printClienteComCpf(String cpf) {
