@@ -1,33 +1,44 @@
 package projeto;
 
 public class Quarto extends Forma{
-	private int numero;
-	private int quantidadeCamas;
+	private int numeroQuarto;
+	private String tipoQuarto;
+	private Cliente cliente;
 	
-	public Quarto(int numero, int quantidadePessoas) {
-		this.numero = numero;
-		this.quantidadeCamas = quantidadePessoas;
+	public Quarto(int numeroQuarto, String tipoQuarto, Cliente cliente) {
+		this.numeroQuarto = numeroQuarto;
+		this.tipoQuarto = tipoQuarto;
+		this.cliente = cliente;
 	}
 	
-	public int getNumero() {
-		return numero;
+	public int getNumeroQuarto() {
+		return numeroQuarto;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumeroQuarto(int numeroQuarto) {
+		this.numeroQuarto = numeroQuarto;
 	}
 
-	public int getQuantidadePessoas() {
-		return quantidadeCamas;
+	public String getTipoQuarto() {
+		return tipoQuarto;
 	}
 
-	public void setQuantidadePessoas(int quantidadePessoas) {
-		this.quantidadeCamas = quantidadePessoas;
+	public void setTipoQuarto(String tipoQuarto) {
+		this.tipoQuarto = tipoQuarto;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
 	public void print() {
-		System.out.println("N�mero: " + this.numero);
-		System.out.println("Quantidade Pessoas: " + this.quantidadeCamas);
+		System.out.println("N�mero: " + this.numeroQuarto);
+		System.out.println("Tipo quarto: " + this.tipoQuarto);
+		cliente.print();
 	}
 }

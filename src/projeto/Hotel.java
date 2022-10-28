@@ -50,12 +50,24 @@ public class Hotel {
 	}
 	
 	
-	public void adicionarQuartos(Quarto quarto, Cliente cliente) {
-		if (quantidadeQuartos <= 15) {
+	public void adicionarQuartos(Quarto quarto) {
+		if (quantidadeQuartos <= 10) {
 			quartos.add(quarto);
 		}else {
 			System.out.println("Quartos esgotado!");
 		}
+	}
+
+	public boolean verificarDisponibilidadeQuarto(int numeroQuarto){
+		boolean disponivel = true;
+
+		for (Quarto quarto : quartos){
+			if (quarto.getNumeroQuarto() == numeroQuarto){
+				disponivel = false;
+			}
+		}
+
+		return disponivel;
 	}
 	
 	public void removerQuarto(int indice) {

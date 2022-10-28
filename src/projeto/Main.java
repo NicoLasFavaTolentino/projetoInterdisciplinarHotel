@@ -35,7 +35,8 @@ public class Main {
 		Scanner leia = new Scanner (System.in);
 		leia.useDelimiter("\\R"); //https://stackoverflow.com/questions/69680170/scanner-skipping-my-nextline-statement-in-constructor
 		String escolha, opcao;
-		String nome, cpf, dataNascimento, endereco;
+		String nome, cpf, dataNascimento, endereco, tipoQuarto = null;
+		int numeroQuarto;
 		int indice;
 		Hotel hotel = new Hotel();
 		
@@ -44,7 +45,8 @@ public class Main {
 					"2 - Remover Cliente" + "\n" +
 					"3 - Pesquisar Cliente" + "\n" +
 					"4 - Editar Cliente" + "\n" +
-					"5- Exibir Todos os Clientes");
+					"5 - Exibir Todos os Clientes" + "\n" +
+					"6 - Exibir Todos os Quartos");
 			
 			System.out.print("Sua escolha: ");
 			escolha = leia.next().toUpperCase();
@@ -52,6 +54,10 @@ public class Main {
 			switch(escolha) {
 				//adicionar cliente
 				case "1":
+					boolean quartoDisponivel;
+
+					System.out.println("Dados do Cadastrante");
+
 					System.out.print("Nome: ");
 					nome = leia.next();
 					
@@ -63,9 +69,45 @@ public class Main {
 					
 					System.out.print("Endereço: ");
 					endereco = leia.next();
+
+					System.out.println("""
+             			Tipo De quarto
+             				
+       					1 - Casal (1 Cama Grande)
+       					2 - Familia (1 Cama Grande e Duas Pequenas)
+					""");
+
+					opcao = leia.next();
+
+					if(opcao.equals("1")){
+						System.out.print("Numero do quarto");
+						numeroQuarto = leia.nextInt();
+
+						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
+
+						if (quartoDisponivel){
+							tipoQuarto = "Casal";
+						}else {
+							System.out.println("Quarto já está sendo utilizado");
+						}
+					}else{
+						System.out.print("Numero do quarto");
+						numeroQuarto = leia.nextInt();
+
+						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
+
+						if(quartoDisponivel){
+							tipoQuarto = "Familia";
+						}else {
+							System.out.println("Quarto já está sendo utilizado");
+						}
+					}
 					
 					Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
+					Quarto quarto = new Quarto(numeroQuarto, tipoQuarto, cliente);
+
 					hotel.adicionarCliente(cliente);
+					hotel.adicionarQuartos(quarto);
 
 					break;
 
@@ -147,6 +189,10 @@ public class Main {
 					hotel.printClientes();
 					
 					break;
+
+				case "6":
+					System.out.println("Quartos cadastrados: ");
+					hotel.printQuartos();
 					
 		}
 		}while (!escolha.equals("SAIR"));
