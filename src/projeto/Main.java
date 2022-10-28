@@ -8,13 +8,13 @@ public class Main {
 	static int indiceClienteCpf(Hotel hotel, String cpf){
 		int indice = 0;
 		ArrayList<Cliente> clientes = hotel.getClientes();
-		
+
 		for (Cliente cliente : clientes){
 			if (cliente.getCpf().equals(cpf)){
 				indice = clientes.indexOf(cliente);
 			}
 		}
-		
+
 		return indice;
 	}
 
@@ -27,7 +27,7 @@ public class Main {
 				existe = true;
 			}
 		}
-		
+
 		return existe;
 	}
 
@@ -39,49 +39,56 @@ public class Main {
 		int numeroQuarto;
 		int indice;
 		Hotel hotel = new Hotel();
-		
+
 		do {
-			System.out.println("1 - Adicionar Cliente" + "\n" +
-					"2 - Remover Cliente" + "\n" +
+			System.out.println("-------------------------"+"\n"+
+					"1 - Adicionar Cliente e Quarto" + "\n" +
+					"2 - Remover Cliente e Quarto" + "\n" +
 					"3 - Pesquisar Cliente" + "\n" +
 					"4 - Editar Cliente" + "\n" +
 					"5 - Exibir Todos os Clientes" + "\n" +
-					"6 - Exibir Todos os Quartos");
-			
-			System.out.print("Sua escolha: ");
+					"6 - Exibir Todos os Quartos" + "\n" +
+					"Digite 'S' para sair");
+
+
+			System.out.print("\n"+"Sua escolha: ");
 			escolha = leia.next().toUpperCase();
-			
+
 			switch(escolha) {
 				//adicionar cliente
 				case "1":
 					boolean quartoDisponivel;
 
-					System.out.println("Dados do Cadastrante");
+					System.out.println("\n" + "Dados do Cadastrante");
 
 					System.out.print("Nome: ");
 					nome = leia.next();
-					
+
 					System.out.print("CPF: ");
 					cpf = leia.next();
-					
+
 					System.out.print("Data Nascimento: ");
 					dataNascimento = leia.next();
-					
+
 					System.out.print("Endereço: ");
 					endereco = leia.next();
 
-					System.out.println("""
-             			Tipo De quarto
-             				
-       					1 - Casal (1 Cama Grande)
-       					2 - Familia (1 Cama Grande e Duas Pequenas)
-					""");
 
+					System.out.println("\n"+"Tipo De quarto" + "\n" + "1 - Casal (1 Cama Grande) n° 1 a 5 " + "\n" + "2 - Familia (1 Cama Grande e Duas Pequenas) n° 6 a 10");
+					System.out.print("Opção: ");
 					opcao = leia.next();
 
 					if(opcao.equals("1")){
-						System.out.print("Numero do quarto");
-						numeroQuarto = leia.nextInt();
+						do {
+							System.out.print("\n" + "Numero do quarto: " +"\n");
+							numeroQuarto = leia.nextInt();
+
+							if (numeroQuarto < 1 || numeroQuarto > 5){
+								System.out.println("Essse numero de quarto está atribuido a outro tipo de quarto" +"\n");
+							}
+
+						}while (numeroQuarto < 1 || numeroQuarto > 5);
+
 
 						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
 
@@ -91,8 +98,16 @@ public class Main {
 							System.out.println("Quarto já está sendo utilizado");
 						}
 					}else{
-						System.out.print("Numero do quarto");
-						numeroQuarto = leia.nextInt();
+
+						do {
+							System.out.print("\n" + "Numero do quarto: ");
+							numeroQuarto = leia.nextInt();
+
+							if (numeroQuarto > 10 || numeroQuarto < 6){
+								System.out.println("Essse numero de quarto está atribuido a outro tipo de quarto");
+							}
+
+						}while (numeroQuarto > 10 || numeroQuarto < 6);
 
 						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
 
@@ -102,7 +117,7 @@ public class Main {
 							System.out.println("Quarto já está sendo utilizado");
 						}
 					}
-					
+
 					Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
 					Quarto quarto = new Quarto(numeroQuarto, tipoQuarto, cliente);
 
@@ -111,30 +126,30 @@ public class Main {
 
 					break;
 
-					//remover cliente
+				//remover cliente
 				case "2":
 					System.out.print("Insira o CPF do cliente a ser removido: ");
 					cpf = leia.next();
-					
-					System.out.println("Encontrado: ");
+
+					System.out.println("\n"+"Encontrado: ");
 					hotel.printClienteComCpf(cpf);
-					
+
 					System.out.print("Remover? S/N: ");
 					opcao = leia.next().toUpperCase();
-					
+
 					if (opcao.equals("S")) {
 						hotel.removerClienteComCpf(cpf);
-						
+
 						System.out.println("Removido!");
 					}else {
 						System.out.println("Cancelado!");
 					}
-					
+
 					break;
 
-					//pesquisar cliente
+				//pesquisar cliente
 				case "3":
-					System.out.print("CPF a ser procurado: ");
+					System.out.print("\n"+"CPF a ser procurado: ");
 					cpf = leia.next();
 
 					System.out.println("Encontrado: ");
@@ -142,7 +157,7 @@ public class Main {
 
 					break;
 
-					//editar cliente
+				//editar cliente
 				case "4":
 					System.out.print("CPF: ");
 					cpf = leia.next();
@@ -151,7 +166,7 @@ public class Main {
 					if (cpfExiste){
 						indice = indiceClienteCpf(hotel, cpf);
 
-						System.out.println("Encontrado: ");
+						System.out.println("Encontrado: " + "\n");
 						hotel.printClienteComCpf(cpf);
 
 						System.out.print("Editar? S/N");
@@ -183,20 +198,21 @@ public class Main {
 
 					break;
 
-					//exibir clientes
+				//exibir clientes
 				case "5":
-					System.out.println("Todos os clientes: ");
+					System.out.println("\n"+"Todos os clientes: ");
 					hotel.printClientes();
-					
+
 					break;
 
+					//exibir todos os quartos
 				case "6":
-					System.out.println("Quartos cadastrados: ");
+					int quantiaQuarto = hotel.getQuartos().size();
+					System.out.println("\n" + "Quartos ocupados: " + quantiaQuarto +" \n");
 					hotel.printQuartos();
-					
-		}
-		}while (!escolha.equals("SAIR"));
-		
-		
+
+			}
+		}while (!escolha.equals("S"));
+		System.out.println("PROGRAMA ENCERRADO");
 	}
 }
