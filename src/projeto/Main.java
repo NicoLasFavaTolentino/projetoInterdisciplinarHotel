@@ -89,14 +89,8 @@ public class Main {
 
 						}while (numeroQuarto < 1 || numeroQuarto > 5);
 
+						tipoQuarto = "Casal";
 
-						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
-
-						if (quartoDisponivel){
-							tipoQuarto = "Casal";
-						}else {
-							System.out.println("Quarto já está sendo utilizado");
-						}
 					}else{
 
 						do {
@@ -109,20 +103,21 @@ public class Main {
 
 						}while (numeroQuarto > 10 || numeroQuarto < 6);
 
-						quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
+						tipoQuarto = "Familia";
 
-						if(quartoDisponivel){
-							tipoQuarto = "Familia";
-						}else {
-							System.out.println("Quarto já está sendo utilizado");
-						}
 					}
 
-					Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
-					Quarto quarto = new Quarto(numeroQuarto, tipoQuarto, cliente);
+					quartoDisponivel = hotel.verificarDisponibilidadeQuarto(numeroQuarto);
 
-					hotel.adicionarCliente(cliente);
-					hotel.adicionarQuartos(quarto);
+					if (quartoDisponivel){
+						Cliente cliente = new Cliente(nome, cpf, dataNascimento, endereco);
+						Quarto quarto = new Quarto(numeroQuarto, tipoQuarto, cliente);
+
+						hotel.adicionarCliente(cliente);
+						hotel.adicionarQuartos(quarto);
+					}else{
+						System.out.println("Quarto já está sendo utilizado");
+					}
 
 					break;
 
