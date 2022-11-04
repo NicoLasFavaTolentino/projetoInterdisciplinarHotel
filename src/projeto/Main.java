@@ -23,8 +23,9 @@ public class Main {
 		ArrayList<Cliente> clientes = hotel.getClientes();
 
 		for (Cliente cliente : clientes){
-			if (cliente.getCpf().equals(cpf)){
+			if (cliente.getCpf().equals(cpf)) {
 				existe = true;
+				break;
 			}
 		}
 
@@ -35,7 +36,7 @@ public class Main {
 		Scanner leia = new Scanner (System.in);
 		leia.useDelimiter("\\R"); //https://stackoverflow.com/questions/69680170/scanner-skipping-my-nextline-statement-in-constructor
 		String escolha, opcao;
-		String nome, cpf, dataNascimento, endereco, tipoQuarto = null;
+		String nome, cpf, dataNascimento, endereco, tipoQuarto;
 		int numeroQuarto;
 		int indice;
 		Hotel hotel = new Hotel();
