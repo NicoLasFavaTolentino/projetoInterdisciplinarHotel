@@ -63,8 +63,9 @@ public class Hotel {
 		boolean disponivel = true;
 
 		for (Quarto quarto : quartos){
-			if (quarto.getNumeroQuarto() == numeroQuarto){
+			if (quarto.getNumeroQuarto() == numeroQuarto) {
 				disponivel = false;
+				break;
 			}
 		}
 
